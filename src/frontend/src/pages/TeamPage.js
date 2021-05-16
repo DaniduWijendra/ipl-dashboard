@@ -5,7 +5,7 @@ import {useParams} from 'react-router-dom';
 
 export const TeamPage = () => {
     //best practise to avoid spelling mistakes when exporting functional class
-    
+    //use effect like axios
     const [team,setTeam] = useState({matches :[]});//team state is defined with empty array
     const {teamName} = useParams();
     useEffect(

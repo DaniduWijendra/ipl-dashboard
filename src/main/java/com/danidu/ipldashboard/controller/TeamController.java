@@ -27,7 +27,7 @@ public class TeamController {
     public Team getTeam(@PathVariable String teamName)//get value fom argument
     {
         Team team = this.teamRepository.findByTeamName(teamName);
-        team.setMatches(matchRepository.findLatestMatchesByTeam(teamName,4));
+        team.setMatches(matchRepository.findLatestMatchesByTeam(teamName, 4));
         return team;
     }
 
