@@ -24,6 +24,11 @@ public class TeamController {
 
 
     //rest apis
+    @GetMapping("/team")
+    public Iterable<Team> getAllTeams()
+    {
+        return this.teamRepository.findAll();
+    }
     @GetMapping("/team/{teamName}")
     public Team getTeam(@PathVariable String teamName)//get value fom argument
     {

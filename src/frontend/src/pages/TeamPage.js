@@ -1,7 +1,7 @@
 import {React, useEffect, useState} from 'react'
 import {MatchDetailCard} from '../components/MatchDetailCard'
 import {MatchSmallCard} from '../components/MatchSmallCard'
-import {useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import {PieChart} from 'react-minimal-pie-chart';
 
 import './TeamPage.scss';
@@ -30,12 +30,12 @@ export const TeamPage = () => {
             <div className="win-loss-section">
                 <h3>Wins/Losses</h3>
                 <PieChart
-                data={[
-                    {title: 'Wins', value: team.totalWins, color: '#20b054'},
-                    {title: 'Losses', value: team.totalMatches - team.totalWins, color: '#f9394d'},
+                    data={[
+                        {title: 'Wins', value: team.totalWins, color: '#20b054'},
+                        {title: 'Losses', value: team.totalMatches - team.totalWins, color: '#f9394d'},
 
-                ]}
-            />
+                    ]}
+                />
             </div>
             <div className="match-detail-section">
                 <h3>Latest Matches</h3>
@@ -43,7 +43,7 @@ export const TeamPage = () => {
             {team.matches.slice(1).map(match => <MatchSmallCard teamName={team.teamName} match={match}/>)}
             {/*    from slice remove first one and then mapped*/}
             <div className="more-link">
-                <a href="#">More ></a>
+                <Link to={`/teams/${teamName}/matches/${process.env.REACT_APP_DATA_END_YEAR}`}>More..</Link>
             </div>
         </div>
     )
