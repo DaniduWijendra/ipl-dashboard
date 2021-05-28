@@ -12,7 +12,7 @@ export const MatchPage = () => {
         {
             const fetchMatches = async () =>
             {
-                const response = await fetch(`http://localhost:8080/team/${teamName}/matches?year=${year}`);
+                const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/team/${teamName}/matches?year=${year}`);
                 const data = await response.json(); //use await because respond send in promise
                 setMatches(data);
             };
@@ -29,7 +29,7 @@ export const MatchPage = () => {
             <div>
             <h1 className="page-heading">{teamName} matches in {year}</h1>
             {
-                matches.map(match => <MatchDetailCard teamName={teamName} match={match}/>)
+                matches.map(match => <MatchDetailCard key = {match.id} teamName={teamName} match={match}/>)
             }
             {/*    from slice remove first one and then mapped*/}
             </div>
